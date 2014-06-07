@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Update" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_update_onstart"
+            android:summary="Check for item database update when app is opened"
+            android:title="Update on Start" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Contact Me" >
+        <Preference
+            android:key="pref_contact"
+            android:summary="Steam : /id/shaunidiot\nReddit : shaunidiot\n\nDo you have any questions or suggestions? Or do you own a CS:GO Skins website and able to provide an extensive API?\nFeel free to contact me by clicking here! :) \n\nP.S If you can&apos;t contact me via Email, drop me a Reddit PM!"
+            android:title="Contact Me" />
+        <Preference
+            android:key="pref_version"
+            android:summary="Feeling generous? Donate some skins if you like! It keeps me motivated to continue developing this app. Click me :)"
+            android:title="" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

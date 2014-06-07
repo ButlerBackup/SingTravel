@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:font="http://schemas.android.com/apk/res/dev.blacksheep.trif"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp" >
+
+    <dev.blacksheep.trif.classes.TextViewPlus
+        android:id="@+id/tvWalletAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Wallet"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        font:customFont="roboto.ttf" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/tvWalletAmount"
+        android:layout_alignLeft="@+id/tvWalletAmount"
+        android:background="@android:color/darker_gray" />
+
+    <dev.blacksheep.trif.classes.TextViewPlus
+        android:id="@+id/tvTicketsPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvWalletAmount"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvWalletAmount"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="1 Person(s)"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        font:customFont="roboto.ttf" />
+
+    <SeekBar
+        android:id="@+id/sbTicketsPeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTicketsPeople"
+        android:layout_below="@+id/tvTicketsPeople"
+        android:max="10"
+        android:progress="1" />
+
+    <dev.blacksheep.trif.classes.TextViewPlus
+        android:id="@+id/tvTicketsPrices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sbTicketsPeople"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/sbTicketsPeople"
+        android:gravity="center"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50dp"
+        font:customFont="roboto.ttf" />
+
+    <Button
+        android:id="@+id/bBuyTickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTicketsPrices"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvTicketsPrices"
+        android:text="Buy Now!" />
+
+    <ImageView
+        android:id="@+id/ivQRCode"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/bBuyTickets"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/placeholder" />
+
+</RelativeLayout>
