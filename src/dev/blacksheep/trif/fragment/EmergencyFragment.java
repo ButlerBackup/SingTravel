@@ -46,7 +46,7 @@ public class EmergencyFragment extends Fragment {
 		map.put("number", "1800 255 0000");
 		contacts.add(map);
 		map = new HashMap<String, String>();
-		map.put("name", "Drugs & Poison (non-emergency");
+		map.put("name", "Drugs & Poison (non-emergency)");
 		map.put("number", "6423 9119");
 		contacts.add(map);
 		EmergencyAdapter adapter = new EmergencyAdapter(getActivity(), contacts);

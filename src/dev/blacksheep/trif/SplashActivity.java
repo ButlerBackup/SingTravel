@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.securepreferences.SecurePreferences;
 
 public class SplashActivity extends Activity {
@@ -27,6 +28,7 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Crashlytics.start(this);
 		setContentView(R.layout.splash);
 		mHandler.postDelayed(mTask, 1000);
 	}
