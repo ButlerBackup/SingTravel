@@ -17,7 +17,7 @@ public class SplashActivity extends Activity {
 				Log.e("FIRSTLOAD", "FIRSTLOAD");
 				settings.edit().putString("wallet", "300.00").commit();
 				settings.edit().putInt("points", 10).commit();
-				settings.edit().putString("initial", "1").commit();
+				//settings.edit().putString("initial", "1").commit();
 			}
 			startActivity(new Intent(SplashActivity.this, MainActivity.class));
 			finish();

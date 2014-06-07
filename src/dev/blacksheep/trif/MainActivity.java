@@ -25,6 +25,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.securepreferences.SecurePreferences;
 import com.sherlock.navigationdrawer.compat.SherlockActionBarDrawerToggle;
 
 import dev.blacksheep.trif.adapters.ExpandableListAdapter;
@@ -46,7 +47,7 @@ public class MainActivity extends SherlockActivity {
 	ExpandableListAdapter listAdapter;
 	List<String> listDataHeader;
 	HashMap<String, List<String>> listDataChild;
-	SharedPreferences settings;
+	SecurePreferences settings;
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
 
 	@Override
@@ -56,7 +57,7 @@ public class MainActivity extends SherlockActivity {
 		new Utils(MainActivity.this).showLostNotification("I'M LOST!", "Click here if you're lost!", LostActivity.class, true, 1);
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
-		settings = MainActivity.this.getSharedPreferences(Consts.PREFS_NAME, Context.MODE_PRIVATE);
+		settings = new SecurePreferences(MainActivity.this);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		listView = (ExpandableListView) findViewById(R.id.left_drawer);
 		// lvMain = (ListView) findViewById(R.id.lvMain);
@@ -87,7 +88,7 @@ public class MainActivity extends SherlockActivity {
 		if (!settings.getString("initial", "0").equals("1")) {
 			// mDrawerLayout.openDrawer(listView);
 			displayView(99, "");
-			settings.edit().putString("initial", "1").commit();
+			//settings.edit().putString("initial", "1").commit();
 		} else {
 			displayView(2, "Nature & Wildlife");
 		}

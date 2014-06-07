@@ -35,7 +35,9 @@ public class LostActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				bFlagTaxi.setEnabled(false);
 				new Utils(getApplicationContext()).showLostNotification("Taxi is on the way!", "Your taxi is SFL " + new Utils(getApplicationContext()).taxiNumber() + "B", MainActivity.class, true, 2);
+				finish();
 			}
 		});
 		try {
