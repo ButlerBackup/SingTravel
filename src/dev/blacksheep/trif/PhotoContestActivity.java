@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,9 +85,11 @@ public class PhotoContestActivity extends Activity {
 			public void onClick(View v) {
 				Object tag = ivPhoto.getTag();
 				int id = tag == null ? -1 : (int) tag;
-				Toast.makeText(PhotoContestActivity.this, "" + id, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(PhotoContestActivity.this, "" + id, Toast.LENGTH_SHORT).show();
 				if (id == R.drawable.splash) {
 					showNoPhotoDialog();
+				} else if (etPhotoMessage.getText().toString().length() < 1) {
+					showNoTextDialog();
 				} else {
 					progressBar = new ProgressDialog(v.getContext());
 					progressBar.setCancelable(false);
@@ -150,6 +153,18 @@ public class PhotoContestActivity extends Activity {
 		return 100;
 	}
 
+	private void showNoTextDialog() {
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+		alert.setTitle("Aw..");
+		alert.setMessage("Type something that you love about Singapore eh? :)");
+		alert.setPositiveButton("Alright!", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+			}
+		});
+		alert.show();
+	}
+	
 	private void showPhotoAlreadyTaken() {
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -258,6 +273,7 @@ public class PhotoContestActivity extends Activity {
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.e("LOG LOG LOG", "" + REQUEST_TAKE_PHOTO + " " + resultCode);
 		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
 			addPhotoToGallery();
 			setFullImageFromFilePath(getCurrentPhotoPath(), ivPhoto);
@@ -270,7 +286,12 @@ public class PhotoContestActivity extends Activity {
 	protected File createImageFile() throws IOException {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
 		String imageFileName = "JPEG_" + timeStamp + "_";
-		File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		// File storageDir = PhotoContestActivity.this.getCacheDir();
+		// File storageDir =
+		// Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+		// Log.e("EXTERNAL",
+		// Environment.getExternalStorageDirectory().toString() + "/Download/");
+		File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 		File image = File.createTempFile(imageFileName, ".jpg", storageDir);
 		setCurrentPhotoPath("file:" + image.getAbsolutePath());
 		return image;

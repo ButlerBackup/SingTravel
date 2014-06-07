@@ -179,6 +179,7 @@ public class MapsFragment extends Fragment {
 		super.onDestroy();
 		if (googleMap != null) {
 			googleMap = null;
+			googleMap.clear();
 		}
 	}
 
@@ -187,6 +188,7 @@ public class MapsFragment extends Fragment {
 		super.onPause();
 		if (googleMap != null) {
 			googleMap = null;
+			googleMap.clear();
 		}
 	}
 
