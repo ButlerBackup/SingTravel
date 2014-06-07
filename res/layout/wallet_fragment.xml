@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:font="http://schemas.android.com/apk/res/dev.blacksheep.trif"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp" >
 
-    <TextView
+    <dev.blacksheep.trif.classes.TextViewPlus
         android:id="@+id/tvCurrentWalletAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +15,8 @@
         android:gravity="center"
         android:padding="8dp"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        font:customFont="roboto.ttf" />
 
     <View
         android:id="@+id/view1"
@@ -24,14 +26,27 @@
         android:layout_below="@+id/tvCurrentWalletAmount"
         android:background="@android:color/darker_gray" />
 
+    <dev.blacksheep.trif.classes.TextViewPlus
+        android:id="@+id/tvCurrentPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/view1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/view1"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        font:customFont="roboto.ttf" />
+
     <Button
         android:id="@+id/bTopupWallet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/view1"
-        android:layout_alignRight="@+id/view1"
-        android:layout_below="@+id/view1"
+        android:layout_alignLeft="@+id/tvCurrentPoints"
+        android:layout_alignRight="@+id/tvCurrentPoints"
+        android:layout_below="@+id/tvCurrentPoints"
         android:padding="8dp"
-        android:text="Button" />
+        android:text="Topup Wallet" />
 
 </RelativeLayout>

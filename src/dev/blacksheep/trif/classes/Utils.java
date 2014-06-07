@@ -8,6 +8,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.koushikdutta.async.future.Future;
@@ -26,25 +30,34 @@ public class Utils {
 		context = con;
 	}
 
-	public boolean checkForUpdates() {
-		SQLFunctions sql = new SQLFunctions(context);
-		sql.open();
-		Future<String> s = Ion.with(context, Consts.ITEMS_UPDATE_DATABASE_LINK + "?id=" + sql.getLastRowId()).asString(); // ADD
-																															// //
-																															// SHIT
-		sql.close();
-		try {
-			String data = s.get();
-			Log.e("checkForUpdates", data);
-			if (data.equals(Consts.ITEMS_UPDATE_DATABASE_YES)) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+	public String getTickets(String event) {
+		SecurePreferences sp = new SecurePreferences(context);
+		return sp.getString(event, "0");
+	}
+
+	public void wifiState(boolean on) {
+		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		if (on) {
+			wifiManager.setWifiEnabled(true);
+		} else {
+			wifiManager.setWifiEnabled(false);
 		}
+	}
+
+	public void gpsState(boolean on) {
+		Intent intent = new Intent("android.location.GPS_ENABLED_CHANGE");
+		if (on) {
+			intent.putExtra("enabled", true);
+		} else {
+			intent.putExtra("enabled", false);
+
+		}
+		context.sendBroadcast(intent);
+		final Intent poke = new Intent();
+		poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+		poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		poke.setData(Uri.parse("3"));
+		context.sendBroadcast(poke);
 	}
 
 	public void showLostNotification(String subject, String message, Class<?> cls, boolean onGoing, int id) {
@@ -64,6 +77,13 @@ public class Utils {
 	public int taxiNumber() {
 		Random r = new Random(System.currentTimeMillis());
 		return (1 + r.nextInt(2)) * 10000 + r.nextInt(10000);
+	}
+
+	public void setPoints() {
+		SecurePreferences sp = new SecurePreferences(context);
+		if (sp.getInt("points", 0) == 0) {
+			sp.edit().putInt("points", 10).commit();
+		}
 	}
 
 	public boolean compareWalletAmount(double value) {
@@ -103,5 +123,39 @@ public class Utils {
 		} else {
 			return false;
 		}
+	}
+
+	public int getPoints() {
+		SecurePreferences sp = new SecurePreferences(context);
+		return sp.getInt("points", 0);
+	}
+
+	public boolean minusPointsAmount(double value) {
+		SecurePreferences sp = new SecurePreferences(context);
+		double points = sp.getInt("points", 0);
+		double newPointsAmount = points - value;
+		Log.e("NEW POINTS", "" + (int) newPointsAmount);
+		if (sp.edit().putInt("points", (int) newPointsAmount).commit()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean addPointsAmount(double value) {
+		SecurePreferences sp = new SecurePreferences(context);
+		double points = sp.getInt("points", 0);
+		double newPointsAmount = points + value;
+		Log.e("NEW POINTS", "" + (int) newPointsAmount);
+		if (sp.edit().putInt("points", (int) newPointsAmount).commit()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void setTickets(String title, String value) {
+		SecurePreferences sp = new SecurePreferences(context);
+		sp.edit().putString(title, value).commit();
 	}
 }

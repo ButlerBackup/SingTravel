@@ -12,7 +12,7 @@ import dev.blacksheep.trif.R;
 import dev.blacksheep.trif.classes.Utils;
 
 public class WalletFragment extends Fragment {
-	TextView tvCurrentWalletAmount;
+	TextView tvCurrentWalletAmount, tvCurrentPoints;
 	Button bTopupWallet;
 
 	public WalletFragment() {
@@ -32,6 +32,8 @@ public class WalletFragment extends Fragment {
 				
 			}
 		});
+		tvCurrentPoints = (TextView) rootView.findViewById(R.id.tvCurrentPoints);
+		tvCurrentPoints.setText("Point(s) : " + new Utils(getActivity()).getPoints());
 		return rootView;
 	}
 

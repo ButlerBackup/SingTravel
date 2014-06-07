@@ -15,15 +15,19 @@ public class MyLocation {
 	LocationResult locationResult;
 	boolean gps_enabled = false;
 	boolean network_enabled = false;
+	Utils u;
+	Context context;
 
 	public boolean getLocation(Context context, LocationResult result) {
 		// I use LocationResult callback class to pass location value from
 		// MyLocation to user code.
+		this.context = context;
 		locationResult = result;
+		u = new Utils(context);
+		u.gpsState(true);
+		u.wifiState(true);
 		if (lm == null)
 			lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-
-		// exceptions will be thrown if provider is not permitted.
 		try {
 			gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		} catch (Exception ex) {
@@ -46,12 +50,24 @@ public class MyLocation {
 		return true;
 	}
 
+	public void cancelTimer() {
+		timer1.cancel();
+		lm.removeUpdates(locationListenerGps);
+		lm.removeUpdates(locationListenerNetwork);
+	}
+
+	private void stopGPSandWifi() {
+		u.gpsState(false);
+	}
+
 	LocationListener locationListenerGps = new LocationListener() {
 		public void onLocationChanged(Location location) {
 			timer1.cancel();
 			locationResult.gotLocation(location);
 			lm.removeUpdates(this);
 			lm.removeUpdates(locationListenerNetwork);
+			stopGPSandWifi();
+			cancelTimer();
 		}
 
 		public void onProviderDisabled(String provider) {
@@ -70,6 +86,8 @@ public class MyLocation {
 			locationResult.gotLocation(location);
 			lm.removeUpdates(this);
 			lm.removeUpdates(locationListenerGps);
+			stopGPSandWifi();
+			cancelTimer();
 		}
 
 		public void onProviderDisabled(String provider) {

@@ -1,12 +1,12 @@
 package dev.blacksheep.trif;
 
-import com.securepreferences.SecurePreferences;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+
+import com.securepreferences.SecurePreferences;
 
 public class SplashActivity extends Activity {
 	private final Handler mHandler = new Handler();
@@ -16,6 +16,8 @@ public class SplashActivity extends Activity {
 			if (!settings.getString("initial", "0").equals("1")) {
 				Log.e("FIRSTLOAD", "FIRSTLOAD");
 				settings.edit().putString("wallet", "300.00").commit();
+				settings.edit().putInt("points", 10).commit();
+				settings.edit().putString("initial", "1").commit();
 			}
 			startActivity(new Intent(SplashActivity.this, MainActivity.class));
 			finish();

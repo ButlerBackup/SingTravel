@@ -29,6 +29,7 @@ import com.sherlock.navigationdrawer.compat.SherlockActionBarDrawerToggle;
 
 import dev.blacksheep.trif.adapters.ExpandableListAdapter;
 import dev.blacksheep.trif.classes.Utils;
+import dev.blacksheep.trif.fragment.EmergencyFragment;
 import dev.blacksheep.trif.fragment.FirstWelcomeFragment;
 import dev.blacksheep.trif.fragment.MRTFragment;
 import dev.blacksheep.trif.fragment.MapsFragment;
@@ -103,8 +104,7 @@ public class MainActivity extends SherlockActivity {
 		listDataHeader.add("Misc");
 
 		List<String> profileData = new ArrayList<String>();
-		profileData.add("Points");
-		profileData.add("Wallet");
+		profileData.add("eWallet");
 		profileData.add("Photo Contest");
 
 		List<String> top250 = new ArrayList<String>();
@@ -149,6 +149,9 @@ public class MainActivity extends SherlockActivity {
 			break;
 		case 3:
 			fragment = new WalletFragment();
+			break;
+		case 4:
+			fragment = new EmergencyFragment();
 			break;
 		case 99:
 			fragment = new FirstWelcomeFragment();
@@ -206,10 +209,12 @@ public class MainActivity extends SherlockActivity {
 				displayView(2, "Arts & Discovery");
 			} else if (category.equals("Nightlife")) {
 				displayView(2, "Nightlife");
-			} else if (category.equals("Wallet")) {
+			} else if (category.equals("eWallet")) {
 				displayView(3, "");
 			} else if (category.equals("Photo Contest")) {
 				startActivity(new Intent(MainActivity.this, PhotoContestActivity.class));
+			} else if (category.equals("Emergency Contacts")) {
+				displayView(4, "");
 			}
 			return false;
 		}

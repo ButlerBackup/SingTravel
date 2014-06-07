@@ -28,33 +28,33 @@ public final class R {
 	}
 	public static final class id {
 		public static final int auto_focus = 0x7f070000;
-		public static final int barcode_image_view = 0x7f070046;
-		public static final int contents_text_view = 0x7f07004f;
+		public static final int barcode_image_view = 0x7f070048;
+		public static final int contents_text_view = 0x7f070051;
 		public static final int decode = 0x7f070001;
 		public static final int decode_failed = 0x7f070002;
 		public static final int decode_succeeded = 0x7f070003;
-		public static final int encode_view = 0x7f070051;
-		public static final int format_text_view = 0x7f070048;
-		public static final int format_text_view_label = 0x7f070047;
-		public static final int image_view = 0x7f070052;
-		public static final int meta_text_view = 0x7f07004e;
-		public static final int meta_text_view_label = 0x7f07004d;
-		public static final int preview_view = 0x7f070043;
+		public static final int encode_view = 0x7f070056;
+		public static final int format_text_view = 0x7f07004a;
+		public static final int format_text_view_label = 0x7f070049;
+		public static final int image_view = 0x7f070057;
+		public static final int meta_text_view = 0x7f070050;
+		public static final int meta_text_view_label = 0x7f07004f;
+		public static final int preview_view = 0x7f070045;
 		public static final int quit = 0x7f070004;
 		public static final int restart_preview = 0x7f070005;
-		public static final int result_view = 0x7f070045;
+		public static final int result_view = 0x7f070047;
 		public static final int return_scan_result = 0x7f070006;
-		public static final int status_view = 0x7f070050;
-		public static final int time_text_view = 0x7f07004c;
-		public static final int time_text_view_label = 0x7f07004b;
-		public static final int type_text_view = 0x7f07004a;
-		public static final int type_text_view_label = 0x7f070049;
-		public static final int viewfinder_view = 0x7f070044;
+		public static final int status_view = 0x7f070052;
+		public static final int time_text_view = 0x7f07004e;
+		public static final int time_text_view_label = 0x7f07004d;
+		public static final int type_text_view = 0x7f07004c;
+		public static final int type_text_view_label = 0x7f07004b;
+		public static final int viewfinder_view = 0x7f070046;
 	}
 	public static final class layout {
 		public static final int capture = 0x7f030016;
 		public static final int decoder = 0x7f030017;
-		public static final int encoder = 0x7f030018;
+		public static final int encoder = 0x7f03001a;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f080000;

@@ -7,9 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import com.koushikdutta.async.Util;
-
-import dev.blacksheep.trif.classes.Utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -34,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import dev.blacksheep.trif.classes.Utils;
 
 public class PhotoContestActivity extends Activity {
 	static final int REQUEST_TAKE_PHOTO = 11111;
@@ -86,6 +84,7 @@ public class PhotoContestActivity extends Activity {
 			public void onClick(View v) {
 				Object tag = ivPhoto.getTag();
 				int id = tag == null ? -1 : (int) tag;
+				Toast.makeText(PhotoContestActivity.this, "" + id, Toast.LENGTH_SHORT).show();
 				if (id == R.drawable.splash) {
 					showNoPhotoDialog();
 				} else {
@@ -241,9 +240,8 @@ public class PhotoContestActivity extends Activity {
 			try {
 				photoFile = createImageFile();
 			} catch (IOException ex) {
-
-				Toast toast = Toast.makeText(PhotoContestActivity.this, "There was a problem saving the photo...", Toast.LENGTH_SHORT);
-				toast.show();
+				ex.printStackTrace();
+				Toast.makeText(PhotoContestActivity.this, "There was a problem saving the photo...", Toast.LENGTH_SHORT).show();
 			}
 
 			if (photoFile != null) {
@@ -262,6 +260,7 @@ public class PhotoContestActivity extends Activity {
 		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
 			addPhotoToGallery();
 			setFullImageFromFilePath(getCurrentPhotoPath(), ivPhoto);
+			ivPhoto.setTag(12345);
 		} else {
 			Toast.makeText(PhotoContestActivity.this, "Image Capture Failed", Toast.LENGTH_SHORT).show();
 		}

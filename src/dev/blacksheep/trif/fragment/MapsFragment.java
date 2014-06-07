@@ -114,25 +114,28 @@ public class MapsFragment extends Fragment {
 				LocationResult locationResult = new LocationResult() {
 					@Override
 					public void gotLocation(Location location) {
-						Log.e("MAPS", "got location");
-						LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-						googleMap.setMyLocationEnabled(true);
-						googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 13));
-						Geocoder gCoder = new Geocoder(getActivity());
-						List<Address> addresses;
-						String address = "Unable to get location.";
-						try {
-							addresses = gCoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-							if (addresses != null && addresses.size() > 0) {
-								address = String.format("%s, %s, %s", addresses.get(0).getMaxAddressLineIndex() > 0 ? addresses.get(0).getAddressLine(0) : "", addresses.get(0).getLocality(),
-										addresses.get(0).getCountryName());
+						if (location != null) {
+							Log.e("MAPS", "got location");
+							LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+							googleMap.setMyLocationEnabled(true);
+							googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 13));
+							Geocoder gCoder = new Geocoder(getActivity());
+							List<Address> addresses;
+							String address = "Unable to get location.";
+							try {
+								addresses = gCoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+								if (addresses != null && addresses.size() > 0) {
+									address = String.format("%s, %s, %s", addresses.get(0).getMaxAddressLineIndex() > 0 ? addresses.get(0).getAddressLine(0) : "", addresses.get(0).getLocality(),
+											addresses.get(0).getCountryName());
+								}
+							} catch (Exception e) {
+								Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+								e.printStackTrace();
 							}
-						} catch (Exception e) {
-							Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-							e.printStackTrace();
+							googleMap.addMarker(new MarkerOptions().title("You are here!").snippet(address).position(currentLocation));
+						} else {
+							Toast.makeText(getActivity(), "Unable to get location", Toast.LENGTH_SHORT).show();
 						}
-						googleMap.addMarker(new MarkerOptions().title("You are here!").snippet(address).position(currentLocation));
-
 					}
 				};
 				MyLocation myLocation = new MyLocation();
