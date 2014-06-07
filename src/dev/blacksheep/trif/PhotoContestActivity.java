@@ -89,7 +89,8 @@ public class PhotoContestActivity extends Activity {
 					showNoPhotoDialog();
 				} else {
 					progressBar = new ProgressDialog(v.getContext());
-					progressBar.setCancelable(true);
+					progressBar.setCancelable(false);
+					progressBar.setCanceledOnTouchOutside(false);
 					progressBar.setMessage("Uploading Photo..");
 					progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 					progressBar.setProgress(0);

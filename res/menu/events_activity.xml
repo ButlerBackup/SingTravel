@@ -9,11 +9,13 @@
         android:orderInCategory="1"
         android:showAsAction="always"
         android:title="Book Tickets"/>
-    <item
+    <!--
+          <item
         android:id="@+id/menu_map"
         android:icon="@drawable/ic_google_maps"
         android:orderInCategory="1"
         android:showAsAction="always"
         android:title="Open in Maps"/>
+    -->
 
 </menu>

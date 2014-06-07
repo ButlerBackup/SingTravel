@@ -60,6 +60,8 @@
         </activity>
         <activity android:name="dev.blacksheep.trif.PhotoContestActivity" >
         </activity>
+        <activity android:name="dev.blacksheep.trif.MapOnlyActivity" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

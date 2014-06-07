@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -111,36 +112,59 @@ public class MapsFragment extends Fragment {
 		try {
 			if (googleMap == null) {
 				googleMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-				LocationResult locationResult = new LocationResult() {
-					@Override
-					public void gotLocation(Location location) {
-						if (location != null) {
-							Log.e("MAPS", "got location");
-							LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-							googleMap.setMyLocationEnabled(true);
-							googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 13));
-							Geocoder gCoder = new Geocoder(getActivity());
-							List<Address> addresses;
-							String address = "Unable to get location.";
-							try {
-								addresses = gCoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-								if (addresses != null && addresses.size() > 0) {
-									address = String.format("%s, %s, %s", addresses.get(0).getMaxAddressLineIndex() > 0 ? addresses.get(0).getAddressLine(0) : "", addresses.get(0).getLocality(),
-											addresses.get(0).getCountryName());
-								}
-							} catch (Exception e) {
-								Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-								e.printStackTrace();
-							}
-							googleMap.addMarker(new MarkerOptions().title("You are here!").snippet(address).position(currentLocation));
-						} else {
-							Toast.makeText(getActivity(), "Unable to get location", Toast.LENGTH_SHORT).show();
-						}
+				LatLng currentLocation = new LatLng(1.345315, 103.931822);
+				googleMap.setMyLocationEnabled(true);
+				googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 18));
+				Geocoder gCoder = new Geocoder(getActivity());
+				List<Address> addresses;
+				String address = "Unable to get location.";
+				try {
+					addresses = gCoder.getFromLocation(1.345315, 103.931822, 1);
+					if (addresses != null && addresses.size() > 0) {
+						address = String.format("%s, %s, %s", addresses.get(0).getMaxAddressLineIndex() > 0 ? addresses.get(0).getAddressLine(0) : "", addresses.get(0).getLocality(), addresses.get(0)
+								.getCountryName());
 					}
-				};
-				MyLocation myLocation = new MyLocation();
-				myLocation.getLocation(getActivity(), locationResult);
+				} catch (Exception e) {
+					Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				}
+				googleMap.addMarker(new MarkerOptions().title("You are here!").snippet(address).position(currentLocation));
+				googleMap.addMarker(new MarkerOptions().title("Taxi Stand").icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi)).snippet(address).position(new LatLng(1.344521284847749, 103.93132847354127)));
+				googleMap.addMarker(new MarkerOptions().title("Taxi Stand").icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi)).snippet(address).position(new LatLng(1.3456796798482762, 103.9316932539673)));
 
+				googleMap.addMarker(new MarkerOptions().title("Taxi Stand").icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi)).snippet(address).position(new LatLng(1.3450361271380884, 103.93227261111451)));
+
+				googleMap.addMarker(new MarkerOptions().title("Taxi Stand").icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi)).snippet(address).position(new LatLng(1.34647339462361, 103.93255156085206)));
+
+				/*
+				 * LocationResult locationResult = new LocationResult() {
+				 * 
+				 * @Override public void gotLocation(Location location) { if
+				 * (location != null) { Log.e("MAPS", "got location"); LatLng
+				 * currentLocation = new LatLng(location.getLatitude(),
+				 * location.getLongitude());
+				 * googleMap.setMyLocationEnabled(true);
+				 * googleMap.moveCamera(CameraUpdateFactory
+				 * .newLatLngZoom(currentLocation, 13)); Geocoder gCoder = new
+				 * Geocoder(getActivity()); List<Address> addresses; String
+				 * address = "Unable to get location."; try { addresses =
+				 * gCoder.getFromLocation(location.getLatitude(),
+				 * location.getLongitude(), 1); if (addresses != null &&
+				 * addresses.size() > 0) { address = String.format("%s, %s, %s",
+				 * addresses.get(0).getMaxAddressLineIndex() > 0 ?
+				 * addresses.get(0).getAddressLine(0) : "",
+				 * addresses.get(0).getLocality(),
+				 * addresses.get(0).getCountryName()); } } catch (Exception e) {
+				 * Toast.makeText(getActivity(), e.getMessage(),
+				 * Toast.LENGTH_SHORT).show(); e.printStackTrace(); }
+				 * googleMap.addMarker(new
+				 * MarkerOptions().title("You are here!")
+				 * .snippet(address).position(currentLocation)); } else {
+				 * Toast.makeText(getActivity(), "Unable to get location",
+				 * Toast.LENGTH_SHORT).show(); } } }; MyLocation myLocation =
+				 * new MyLocation(); myLocation.getLocation(getActivity(),
+				 * locationResult);
+				 */
 				if (googleMap == null) {
 					Toast.makeText(getActivity(), "Sorry! unable to create maps", Toast.LENGTH_SHORT).show();
 				}

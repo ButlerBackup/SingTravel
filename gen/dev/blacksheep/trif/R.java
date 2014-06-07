@@ -1154,6 +1154,7 @@ containing a value of this type.
         public static final int ny=0x7f020099;
         public static final int placeholder=0x7f02009a;
         public static final int splash=0x7f02009b;
+        public static final int taxi=0x7f02009c;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f07002b;
@@ -1195,7 +1196,7 @@ containing a value of this type.
         public static final int abs__textButton=0x7f07001e;
         public static final int abs__title=0x7f070026;
         public static final int abs__up=0x7f070016;
-        public static final int action_settings=0x7f07007f;
+        public static final int action_settings=0x7f07007e;
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
@@ -1244,8 +1245,7 @@ containing a value of this type.
         public static final int lvEmergency=0x7f070053;
         public static final int map=0x7f07006a;
         public static final int menu_book_tickets=0x7f07007d;
-        public static final int menu_map=0x7f07007e;
-        public static final int menu_take_photo=0x7f070080;
+        public static final int menu_take_photo=0x7f07007f;
         public static final int meta_text_view=0x7f070050;
         public static final int meta_text_view_label=0x7f07004f;
         public static final int mrt_image=0x7f07006f;
@@ -1333,16 +1333,17 @@ containing a value of this type.
         public static final int listview_item=0x7f030024;
         public static final int lost_activity=0x7f030025;
         public static final int main=0x7f030026;
-        public static final int maps_layout=0x7f030027;
-        public static final int mrt_layout=0x7f030028;
-        public static final int photo_contest_activity=0x7f030029;
-        public static final int places_of_interest_item=0x7f03002a;
-        public static final int places_of_interest_layout=0x7f03002b;
-        public static final int sherlock_spinner_dropdown_item=0x7f03002c;
-        public static final int sherlock_spinner_item=0x7f03002d;
-        public static final int show_tickets_bought_activity=0x7f03002e;
-        public static final int splash=0x7f03002f;
-        public static final int wallet_fragment=0x7f030030;
+        public static final int map_only_activity=0x7f030027;
+        public static final int maps_layout=0x7f030028;
+        public static final int mrt_layout=0x7f030029;
+        public static final int photo_contest_activity=0x7f03002a;
+        public static final int places_of_interest_item=0x7f03002b;
+        public static final int places_of_interest_layout=0x7f03002c;
+        public static final int sherlock_spinner_dropdown_item=0x7f03002d;
+        public static final int sherlock_spinner_item=0x7f03002e;
+        public static final int show_tickets_bought_activity=0x7f03002f;
+        public static final int splash=0x7f030030;
+        public static final int wallet_fragment=0x7f030031;
     }
     public static final class menu {
         public static final int events_activity=0x7f0d0000;
@@ -1498,7 +1499,12 @@ containing a value of this type.
         public static final int drawer_close=0x7f08004c;
         public static final int drawer_open=0x7f08004b;
         public static final int encoder_name=0x7f080002;
-        public static final int event_singapore_zoo=0x7f08004e;
+        public static final int event_birdpark=0x7f080052;
+        public static final int event_botanical_garden=0x7f08004f;
+        public static final int event_garden_by_the_bay=0x7f080053;
+        public static final int event_night_safari=0x7f080051;
+        public static final int event_river_safari=0x7f08004e;
+        public static final int event_singapore_zoo=0x7f080050;
         public static final int hello_world=0x7f080048;
         /**  Location client code resources (prefix with location_client) 
          */

@@ -14,6 +14,8 @@ import com.koushikdutta.ion.Ion;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
 public class EventsActivity extends Activity {
+	String latitude, longtitude;
+	String address = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,43 @@ public class EventsActivity extends Activity {
 		setContentView(helper.createView(this));
 		ImageView ivHeader = (ImageView) findViewById(R.id.image_header);
 		TextView tvDetails = (TextView) findViewById(R.id.tvDetails);
-		String details = EventsActivity.this.getResources().getString(R.string.event_singapore_zoo).toString();
-		tvDetails.setText(Html.fromHtml(details));
-		tvDetails.setMovementMethod(LinkMovementMethod.getInstance());
 		Intent i = getIntent();
 		String image = i.getStringExtra("image");
 		String name = i.getStringExtra("name");
+		String details = "";
+		if (name.equals("Zoo")) {
+			address = "80 Mandai Lake Rd, 729826 8.30am – 6.30pm";
+			latitude = "1.404348";
+			longtitude = "103.793023";
+			details = EventsActivity.this.getResources().getString(R.string.event_singapore_zoo).toString();
+		} else if (name.equals("Botanical Garden")) {
+			address = "1 Cluny Rd, 259569 5.00am – 12.00mn";
+			latitude = "1.322519";
+			longtitude = "103.815406";
+			details = EventsActivity.this.getResources().getString(R.string.event_botanical_garden).toString();
+		} else if (name.equals("River Safari")) {
+			address = "80 Mandai Lake Road, 729826 9.00am – 6.00pm";
+			details = EventsActivity.this.getResources().getString(R.string.event_river_safari).toString();
+		} else if (name.equals("Night Safari")) {
+			latitude = "1.403836";
+			longtitude = "103.789668";
+			address = "80 Mandai Lake Rd, 729826 7.30pm – 12.00mn";
+			details = EventsActivity.this.getResources().getString(R.string.event_night_safari).toString();
+		} else if (name.equals("BirdPark")) {
+			latitude = "1.321298";
+			longtitude = "103.707755";
+			address = "2 Jurong Hill Singapore 628925 8.30am – 6.00pm";
+			details = EventsActivity.this.getResources().getString(R.string.event_birdpark).toString();
+		} else if (name.equals("Garden By The Bay")) {
+			latitude = "1.281514";
+			longtitude = "103.864047";
+			address = "18 Marina Gardens Dr, 018953 5:00 AM - 2:00 AM, Daily";
+			details = EventsActivity.this.getResources().getString(R.string.event_garden_by_the_bay).toString();
+		}
+		invalidateOptionsMenu();
+		tvDetails.setText(Html.fromHtml(details));
+		tvDetails.setMovementMethod(LinkMovementMethod.getInstance());
+
 		Ion.with(ivHeader).load(image);
 		helper.initActionBar(this);
 		getActionBar().setTitle(name);
@@ -54,6 +87,10 @@ public class EventsActivity extends Activity {
 			startActivity(new Intent(EventsActivity.this, BookTicketsActivity.class).putExtra("title", getActionBar().getTitle()));
 			overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
 			break;
+
+		//case R.id.menu_map:
+		//	startActivity(new Intent(EventsActivity.this, MapOnlyActivity.class).putExtra("address", address).putExtra("lat", latitude).putExtra("long", longtitude));
+		//	break;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
