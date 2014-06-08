@@ -39,11 +39,11 @@ public class LostActivity extends Activity {
 				finish();
 			}
 		});
-		try {
-			initialiseMaps();
-		} catch (Exception e) {
-			Toast.makeText(LostActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-		}
+		//try {
+		//	initialiseMaps();
+		//} catch (Exception e) {
+		//	Toast.makeText(LostActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+		//}
 	}
 
 	private void initialiseMaps() {

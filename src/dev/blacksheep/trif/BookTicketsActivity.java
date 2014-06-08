@@ -67,7 +67,9 @@ public class BookTicketsActivity extends Activity {
 						new Utils(BookTicketsActivity.this).addPointsAmount(person);
 						Toast.makeText(BookTicketsActivity.this, "Successfully booked tickets. Show this at entrance\n" + person + " points have been added to your wallet!", Toast.LENGTH_SHORT)
 								.show();
-
+						sbPoints.setEnabled(false);
+						sbTicketsPeople.setEnabled(false);
+						bBuyTickets.setEnabled(false);
 					} catch (WriterException e) {
 						e.printStackTrace();
 					}

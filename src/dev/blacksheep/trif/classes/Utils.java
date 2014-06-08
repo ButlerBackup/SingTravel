@@ -111,6 +111,19 @@ public class Utils {
 		}
 	}
 
+	public boolean addWalletAmount(double value) {
+		Log.e("WALLET", "ADDING " + value);
+		SecurePreferences sp = new SecurePreferences(context);
+		double wallet = Double.parseDouble(sp.getString("wallet", "0.00"));
+		double newWalletAmount = wallet + value;
+		Log.e("NEW WALLET", String.valueOf(newWalletAmount));
+		if (sp.edit().putString("wallet", String.valueOf(newWalletAmount)).commit()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public boolean getPhotoDone() {
 		SecurePreferences sp = new SecurePreferences(context);
 		return sp.getBoolean("photo", false);

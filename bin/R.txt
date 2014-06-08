@@ -336,9 +336,10 @@ int drawable icon 0x7f020097
 int drawable image_border 0x7f020098
 int drawable map 0x7f020099
 int drawable ny 0x7f02009a
-int drawable placeholder 0x7f02009b
-int drawable splash 0x7f02009c
-int drawable taxi 0x7f02009d
+int drawable paypal 0x7f02009b
+int drawable placeholder 0x7f02009c
+int drawable splash 0x7f02009d
+int drawable taxi 0x7f02009e
 int id abs__action_bar 0x7f07002b
 int id abs__action_bar_container 0x7f07002a
 int id abs__action_bar_subtitle 0x7f07001c

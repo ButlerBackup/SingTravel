@@ -1153,9 +1153,10 @@ containing a value of this type.
         public static final int image_border=0x7f020098;
         public static final int map=0x7f020099;
         public static final int ny=0x7f02009a;
-        public static final int placeholder=0x7f02009b;
-        public static final int splash=0x7f02009c;
-        public static final int taxi=0x7f02009d;
+        public static final int paypal=0x7f02009b;
+        public static final int placeholder=0x7f02009c;
+        public static final int splash=0x7f02009d;
+        public static final int taxi=0x7f02009e;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f07002b;

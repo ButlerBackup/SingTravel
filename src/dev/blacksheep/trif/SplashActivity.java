@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Crashlytics.start(this);
 		setContentView(R.layout.splash);
-		mHandler.postDelayed(mTask, 1000);
+		mHandler.postDelayed(mTask, 5000);
 	}
 
 	@Override
